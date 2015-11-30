@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="myApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AngularJS & Firebase Test Application</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div class="container">
+
+     <div class="jumbotron" style="padding-bottom:0px;">
+         <h2>AngularJS & Firebase Test Application</h2>
+     </div>
+     <form class="form-signin" name="regForm">
+
+        <div class="form-group" ng-class="{ 'has-error' : regForm.email.$invalid }">
+          <label>Email</label>
+          <input ng-model="user.email" type="email" class="form-control" placeholder="Email address" required="" autofocus="">
+          <p class="help-block" ng-show="regForm.email.$invalid">Enter a valid email</p>
+        </div><!--//form-group-->
+        <div class="form-group" ng-class="{ 'has-error' : regForm.password.$invalid }">
+          <label>Password</label>
+          <input ng-model="user.password" ng-minlength="8" type="password" class="form-control" placeholder="Password" required="">
+          <p class="help-block" ng-show="regForm.password.$error.minlength">Min password length must be 8 characters</p>
+        </div><!--//form-group-->
+
+        <button ng-disabled="!user.email || !user.password" class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        <label class="checkbox"><a href="#/home">Sign In</></label>
+
+    </form>
+
+   </div><!--//container-->
+
+</body>
+</html>
