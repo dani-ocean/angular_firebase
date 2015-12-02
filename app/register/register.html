@@ -13,7 +13,7 @@
   <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
 </head>
 
-<body>
+<body ng-controller="RegisterCtrl">
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -37,7 +37,8 @@
           <p class="help-block" ng-show="regForm.password.$error.minlength">Min password length must be 8 characters</p>
         </div><!--//form-group-->
 
-        <button ng-disabled="!user.email || !user.password" class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        <button ng-click="signUp();" ng-disabled="!user.email || !user.password" class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+        <p style="color:red;" ng-show="regError">{{regErrorMessage}}</p>
         <label class="checkbox"><a href="#/home">Sign In</></label>
 
     </form>

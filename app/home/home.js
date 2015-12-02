@@ -11,7 +11,7 @@ angular.module('myApp.home', ['ngRoute', 'firebase'])
   }])
 
   //Home controller
-  .controller('HomeCtrl', ['$scope', '$firebaseSimpleLogin', function($scope,$firebaseSimpleLogin){
+  .controller('HomeCtrl', ['$scope', '$location', '$firebaseAuth', function($scope,$location,$firebaseSimpleLogin){
     //logic to handle firebase login
     var firebaseObj = new Firebase('https://popping-fire-4169.firebaseio.com');
     var loginObj = $firebaseSimpleLogin(firebaseObj);
@@ -23,13 +23,14 @@ angular.module('myApp.home', ['ngRoute', 'firebase'])
       var password = $scope.user.password;
 
       //handle login errors
-      loginObj.$login('password', {
+      loginObj.$authWithPassword({
         email: username,
         password: password
       })
       .then(function(user){
-          //success callback
-          console.log('Login successful');
+          //send to welcome
+          $location.path('/welcome');
+          
       },  function(error){
           console.log('Login failed');
       });
